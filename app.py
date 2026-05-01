@@ -96,7 +96,7 @@ if query:
         st.markdown("---")
         
 # -----------------------------
-# 8. OPTIONAL SIDEBAR INFO
+# 8. SIDEBAR INFO
 # -----------------------------
 st.sidebar.title("About")
 st.sidebar.write(
