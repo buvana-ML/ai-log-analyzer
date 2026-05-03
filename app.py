@@ -19,7 +19,7 @@ df = df.dropna(subset=['message'])
 # Remove duplicates
 df = df.drop_duplicates(subset=['message'])
 
-# Keep only FAILURE logs (important)
+# Keep only FAILURE logs 
 df = df[df['status'] == "FAILURE"]
 
 # Remove noisy / useless logs
@@ -33,7 +33,7 @@ texts = df['message'].astype(str).tolist()
 docs = [Document(page_content=text) for text in texts]
 
 # -----------------------------
-# 3. EMBEDDINGS (FREE MODEL)
+# 3. EMBEDDINGS
 # -----------------------------
 embeddings = HuggingFaceEmbeddings(
     model_name="all-MiniLM-L6-v2"
@@ -45,7 +45,7 @@ embeddings = HuggingFaceEmbeddings(
 db = FAISS.from_documents(docs, embeddings)
 
 # -----------------------------
-# 5. IMPROVED EXPLANATION
+# 5. EXPLANATION
 # -----------------------------
 def explain_log(log):
     log = log.lower()
